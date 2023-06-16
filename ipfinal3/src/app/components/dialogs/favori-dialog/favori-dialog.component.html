@@ -1,0 +1,36 @@
+<mat-toolbar color="warn" class="mat-elevation-z6">
+  <span>{{favoriDialogBaslik}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">   
+    <mat-form-field appearance="outline">
+      <mat-label>Favori ID</mat-label>
+      <input matInput formControlName="favoriID" placeholder="Favori ID" name="favoriID" required type ="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Üye Id</mat-label>
+      <input matInput  formControlName="uyeID"  placeholder="Üye Id"  name= "uyeID" required type ="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>İp Numarasi</mat-label>
+      <input matInput   formControlName="ipNumarasi" placeholder="İp Numarası" name= "ipNumarasi"  required type ="text">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Urun ID</mat-label>
+      <input matInput  formControlName="urunID" placeholder="Urun ID"  name= "urunID" required type ="text">
+    </mat-form-field>
+       
+
+    <p></p>
+    <button mat-raised-button  color="warn" (click)="dialogRef.close(frm.value)" [disabled]="frm.invalid">Kaydet</button> &nbsp;
+    <button mat-raised-button color="warn" (click)="dialogRef.close()">İptal </button> 
+
+    
+    
+    
+    
+    </form>
+    
+    
+</div>

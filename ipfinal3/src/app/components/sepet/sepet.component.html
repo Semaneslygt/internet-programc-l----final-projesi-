@@ -1,0 +1,57 @@
+<div class="container ">
+  <h1>SEPET</h1> 
+  
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Aranacak Bir Değer Giriniz" (keyup)="Filtrele($event)"> 
+ </mat-form-field>
+  
+  <button mat-fab matTooltip="Sepete Ekle" color="basic" (click)="SepeteEkle()"> 
+    <mat-icon aria-label="label">add</mat-icon>
+  </button> 
+ 
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="sepetID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Sepet ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let sepet"> {{sepet.sepetID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="uyeID">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Üye ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let uye"> {{uye.uyeID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ipNumarasi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ip ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let ipNumarasi"> {{ipNumarasi.ipNumarasi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="urunID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ürün ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let urun"> {{urun.urunID}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler</mat-header-cell>
+      <mat-cell *matCellDef="let urun"> 
+      <button mat-icon-button color="warn" matTooltip="Sepet Düzenle" (click)="SepetDuzenle(urun)">
+        <mat-icon aria-label="label">edit</mat-icon>
+      </button>        
+      <button mat-icon-button color="primary" matTooltip="Sepet Sil"  (click)="SepetUrunSil(urun)">
+        <mat-icon aria-label="label">delete</mat-icon> 
+     </button>  
+     <button mat-icon-button color="warn" matTooltip="Sepet Listele"  [routerLink]="['/sepetlistele', urun.sepetID]">
+      <mat-icon aria-label="label">article</mat-icon> 
+   </button>
+      </mat-cell>
+    </ng-container>
+   
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator 
+      [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons="">
+</mat-paginator>
+</div> 
+
+

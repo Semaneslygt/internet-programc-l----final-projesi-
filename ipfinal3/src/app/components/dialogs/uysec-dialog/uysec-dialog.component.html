@@ -1,0 +1,29 @@
+ <mat-toolbar color="warn">
+  <span>{{uyeSecDialogBaslik}}</span>
+</mat-toolbar>
+<div class="container">
+<form  [formGroup]="frm"> 
+<mat-form-field appearance="outline">
+  <input matInput placeholder="Üye Id" formControlName="uyeID" required type ="text">
+</mat-form-field>
+<mat-form-field appearance="outline">
+  <input matInput formControlName="adSoyad" placeholder="Ad Soyad" name="adSoyad" required type ="text">
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <input matInput formControlName="email" placeholder="E-Mail"  name="email" required type ="text">
+</mat-form-field>
+<mat-form-field appearance="outline">
+  <input matInput formControlName="sifre" placeholder="Şifre"  name="sifre" required type ="text">
+</mat-form-field>
+<mat-form-field appearance="outline">
+  <input matInput formControlName="adres" placeholder="Adres" name="adres" required type ="text">
+</mat-form-field>
+<mat-form-field appearance="outline">
+  <input matInput formControlName="admin" placeholder="Admin"   name="admin" required type ="text">
+</mat-form-field>
+ </form> 
+<button mat-raised-button  color="warn" (click)="dialogRef.close(frm.value)" [disabled]="frm.invalid">Kaydet</button> &nbsp;
+<button mat-raised-button color="warn" (click)="dialogRef.close()">İptal </button> 
+
+  

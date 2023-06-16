@@ -1,0 +1,32 @@
+
+<mat-toolbar color="warn"class="mat-elevation-z6">
+    <span>{{sepetDialogBaslik}}</span>
+  </mat-toolbar>
+  <div class="container">
+    <form [formGroup]="frm"> 
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Sepet ID</mat-label> -->
+        <input matInput formControlName="sepetID " placeholder="Sepet ID"  name="sepetID" required type ="text">
+      </mat-form-field>
+      <p></p>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Üye ID</mat-label> -->
+        <input matInput formControlName="uyeID" placeholder="Üye ID" name="uyeID" required type ="text">
+      </mat-form-field>
+      <p></p>
+      
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>İp Numarası</mat-label> -->
+        <input matInput formControlName="ipNumarasi"  placeholder="ip Numarası"  name= "ipNumarasi" required type ="text">
+      </mat-form-field>
+      <p></p>
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Ürün ID</mat-label> -->
+        <input matInput formControlName="urunID" placeholder="Ürün ID" name=" urunID" required type ="text">
+      </mat-form-field>
+      <p></p>
+     
+      <button mat-raised-button color="warn" (click)="dialogRef.close(frm.value)"  [disabled]="frm.invalid"> Kaydet</button> &nbsp;
+      <button mat-raised-button color="warn" (click)="dialogRef.close()" > İptal</button>
+      </form>
+  </div>

@@ -1,0 +1,62 @@
+<div class="container">
+  <h1>Üye Listesi</h1>
+  <h3><b>Üye ID : </b> {{secUye.uyeID}}</h3>
+  <h3><b>Üye Adı : </b> {{secUye.adSoyad}}</h3>
+
+
+  <button mat-fab color="primary" matTooltip="Üye Listesi" [routerLink]="['/uye']">
+     <mat-icon aria-label="label">arrow_back</mat-icon>
+   </button> &nbsp;
+   <p>&nbsp;</p>  
+  
+    <button mat-fab color="primary" matTooltip="Üye Ekle" (click)="Kaydet()">
+     <mat-icon aria-label="label">add</mat-icon>
+   </button>
+ 
+  <mat-table [dataSource]="dataSource" matSort>
+   <ng-container matColumnDef="uyeID">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Üye ID
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.dersBilgi.sepetID}} </mat-cell>
+   </ng-container>
+   <ng-container matColumnDef="adSoyad">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ad Soyad
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.dersBilgi.sepetID}} </mat-cell>
+   </ng-container>
+   <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.dersBilgi.sepetID}} </mat-cell>
+   </ng-container>
+   <ng-container matColumnDef="sifre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Şifre
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.dersBilgi.sepetID}} </mat-cell>
+   </ng-container>
+   <ng-container matColumnDef="adres">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Adres
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.dersBilgi.sepetID}} </mat-cell>
+   </ng-container>
+   <ng-container matColumnDef="admin">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Admin
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.dersBilgi.sepetID}} </mat-cell>
+   </ng-container>
+   <ng-container matColumnDef="islemler">
+     <mat-header-cell *matHeaderCellDef> İşlemler
+     </mat-header-cell>
+     <mat-cell *matCellDef="let kayit"> 
+   <button mat-icon-button color="warn" matTooltip="Üye Kaydını Sil" (click)="UyeSil(kayit)">
+     <mat-icon aria-label="label">delete</mat-icon>
+   </button>
+   </mat-cell>
+   </ng-container>
+
+
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+

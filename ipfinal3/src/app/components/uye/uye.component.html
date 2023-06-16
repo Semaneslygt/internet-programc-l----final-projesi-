@@ -1,0 +1,68 @@
+<div class="container ">
+  <h1>ÜYELER</h1>
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Aranacak Bir Değer Giriniz" (keyup)="Filtrele($event)"> 
+  </mat-form-field>
+   
+  
+  <button mat-fab matTooltip="Üye Ekle" color="basic" (click)="UyeEkle()"> 
+    <mat-icon aria-label="label">person_add</mat-icon>
+  </button>
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="uyeID">
+      <mat-header-cell *matHeaderCellDef   mat-sort-header> Üye ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let uye" > {{uye.uyeID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="adSoyad">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Ad Soyad
+      </mat-header-cell>
+      <mat-cell *matCellDef="let uye"> {{uye.adSoyad}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> E-Mail
+      </mat-header-cell>
+      <mat-cell *matCellDef="let uye"  > {{uye.email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="sifre">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Şifre
+      </mat-header-cell>
+      <mat-cell *matCellDef="let uye"  > {{uye.sifre}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="adres">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Adres
+      </mat-header-cell>
+      <mat-cell *matCellDef="let uye"> {{uye.adres}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="admin">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Admin
+      </mat-header-cell>
+      <mat-cell *matCellDef="let uye"> {{uye.admin}} </mat-cell>
+    </ng-container>
+
+    
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler</mat-header-cell>
+      <mat-cell *matCellDef="let uye"> 
+      <button mat-icon-button color="warn" matTooltip="Üye Listele" [routerLink]="['/uyelistele' , uye.uyeID]">
+        <mat-icon aria-label="label">article</mat-icon>
+      </button>
+
+      <button mat-icon-button color="primary" matTooltip="Üye Sil"  (click)="UyeSil(uye)">
+        <mat-icon aria-label="label">delete</mat-icon> 
+     </button>  
+      
+      <button mat-icon-button color="warn" matTooltip="Üye Düzenle" (click)="UyeDuzenle(uye)">
+        <mat-icon aria-label="label">edit</mat-icon> 
+     </button>  
+      </mat-cell>
+    </ng-container>
+    
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator 
+      [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons="">
+</mat-paginator>

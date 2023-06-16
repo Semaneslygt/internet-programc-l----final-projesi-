@@ -1,0 +1,54 @@
+<div class="container">
+  <h1>Favori Listesi</h1>
+  <h3><b>Favori ID  : </b>{{secFavori.favoriID}}</h3>
+  <h3><b>Üye ID : </b>{{secFavori.uyeID}}</h3>
+
+  <button mat-fab color="primary" matTooltip="Favori Listesi" [routerLink]="['/favori']">
+    <mat-icon aria-label="label">arrow_back</mat-icon>
+  </button>
+ 
+   <button mat-fab color="primary" matTooltip="Favori Ekle" (click)="FavoriEkle()">
+    <mat-icon aria-label="label">person_add</mat-icon>
+  </button>
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z6">
+    <ng-container matColumnDef="favoriID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Favori ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.favoriBilgi.favoriID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="uyeID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Üye ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.favoriBilgi.uyeID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ipNumarasi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> İp Numarası
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.favoriBilgi.ipNumarasi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="urunID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ürün ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.favoriBilgi.urunID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> 
+        <button mat-icon-button color="warn" matTooltip="Favori Kaydını Sil" (click)="FavoriSil(kayit)">
+          <mat-icon aria-label="label">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+  </mat-paginator>
+</div>
+
+
+

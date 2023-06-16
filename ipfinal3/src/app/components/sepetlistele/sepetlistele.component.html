@@ -1,0 +1,107 @@
+  <!-- <h1>Sepet Listesi</h1> 
+  <h3><b> Üye ID: </b> {{secSepet.uyeID}}</h3>
+  <h3><b>Sepet ID : </b> {{secSepet.sepetID}}</h3>
+  
+  <button mat-fab color="primary" matTooltip="Sepet Listesi" [routerLink]="['/sepet']">
+    <mat-icon aria-label="label">arrow_back</mat-icon>
+  </button>
+  
+<button mat-fab color="primary" (click)="SepetEkle()" matTooltip="Sepet Ekle">&nbsp;
+    <mat-icon aria-label="label">person_add</mat-icon>
+  </button> 
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Sepet Seçiniz</mat-label>
+  <mat-select placeholder="Sepet Seçiniz">
+      <mat-option [value]="'sepet.sepetID'" *ngFor="let sepet of sepetler">{{sepet.sepetID}}</mat-option> 
+  </mat-select>
+
+</mat-form-field>
+  
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="sepetID">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sepet ID
+        </mat-header-cell>
+        <mat-cell *matCellDef="let sepet"> {{sepet.sepetID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="uyeID">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sepet ID
+        </mat-header-cell>
+        <mat-cell *matCellDef="let sepet"> {{sepet.uyeID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="urunSayisi">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ürün Sayısı
+        </mat-header-cell>
+        <mat-cell *matCellDef="let sepet"> {{sepet.urunSayisi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> İşlemler
+        </mat-header-cell>
+        <mat-cell *matCellDef="let sepet"> 
+            <button mat-icon-button color=" warn" matTooltip="Sepeti sil">
+                <mat-icon aria-label="label">delete</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+  
+   -->
+
+   <div class="container">
+      <h1>Sepet Listesi</h1>
+      <h3><b>Üye Id: </b>{{secSepet.uyeID}}</h3>
+      <h3><b>Sepet ID : </b>{{secSepet.sepetID}}</h3>
+    
+      <button mat-fab color="primary" matTooltip="Sepet Listesi" [routerLink]="['/sepet']">
+        <mat-icon aria-label="label">arrow_back</mat-icon>
+      </button>
+      <p>&nbsp;</p>
+    
+      <mat-form-field appearance="outline" style="width: 50%;">
+        <mat-label>Sepet Seçiniz</mat-label>
+        <mat-select placeholder="Sepet Seçiniz" (selectionChange)="SepetSec($event.value)">
+          <mat-option [value]="sepet.sepetID" *ngFor="let sepet of sepetler">{{sepet.uyeID}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;&nbsp; <button mat-fab color="primary" matTooltip="Sepet Ekle" (click)="Kaydet()">
+        <mat-icon aria-label="label">add</mat-icon>
+      </button>
+    
+      <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="sepetID">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Sepet ID
+          </mat-header-cell>
+          <mat-cell *matCellDef="let kayit"> {{kayit.dersBilgi.sepetID}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="uyeID">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Üye ID
+          </mat-header-cell>
+          <mat-cell *matCellDef="let kayit"> {{kayit.dersBilgi.uyeID}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="urunSayisi">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Ürün Sayısı
+          </mat-header-cell>
+          <mat-cell *matCellDef="let kayit"> {{kayit.dersBilgi.urunSayisi}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="islemler">
+          <mat-header-cell *matHeaderCellDef> İşlemler
+          </mat-header-cell>
+          <mat-cell *matCellDef="let kayit"> 
+    
+            <button mat-icon-button color="warn" matTooltip="Sepet Kaydını Sil" (click)="SepetSil(kayit)">
+              <mat-icon aria-label="label">delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+      
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator
+            [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+      </mat-paginator>
+  </div>
+    

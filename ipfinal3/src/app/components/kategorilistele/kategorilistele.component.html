@@ -1,0 +1,44 @@
+<div class="container">  
+    <h1>Kategori Listesi</h1>
+    <h3><b>Kategori ID : </b> {{secKategori.kategoriID}}</h3>
+    <h3><b>Kategori Adı : </b> {{secKategori.kategoriAdi}}</h3>
+
+    <button mat-fab color="warn" matTooltip="KATEGORİ LİSTESİ" [routerLink]="['/kategori']"> 
+        <mat-icon aria-label="label">arrow_back</mat-icon>
+    </button>
+
+    <button mat-fab color="primary" (click)="KategoriEkle()" matTooltip="Kategori Ekle">
+        <mat-icon aria-label="label">add</mat-icon>
+    </button>
+
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="kategoriID">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Kategori ID
+            </mat-header-cell>
+            <mat-cell *matCellDef="let kayit"> {{kayit.kategoriBilgi.kategoriID}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="kategoriAdi">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Kategori Adı
+            </mat-header-cell>
+            <mat-cell *matCellDef="let kayit"> {{kayit.kategoriBilgi.kategoriAdi}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="admin">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Admin
+            </mat-header-cell>
+            <mat-cell *matCellDef="let kayit"> {{kayit.kategoriBilgi.admin}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="islemler">
+            <mat-header-cell *matHeaderCellDef> İşlemler
+            </mat-header-cell>
+            <mat-cell *matCellDef="let kayit"> 
+          <button mat-icon-button color="warn" matTooltip="Kategori Kaydını Sil" (click)="KategoriSil(kayit)">
+            <mat-icon aria-label="label">delete</mat-icon>
+          </button>
+          </mat-cell>
+          </ng-container>
+       
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table> 
+</div>   

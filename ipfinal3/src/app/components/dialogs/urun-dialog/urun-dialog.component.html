@@ -1,0 +1,51 @@
+<mat-toolbar color="warn" class="mat-elevation-z6">
+  <span>{{urunDialogBaslik}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <!-- <mat-label>Ürün Id</mat-label> -->
+      <input matInput formControlName="urunID" placeholder="Ürün Id" name="urunID" required type ="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <!-- <mat-label>Ürün Adı</mat-label> -->
+      <input matInput formControlName="urunAdi"  placeholder="Ürün Adı"  name="urunAdi " required type ="text">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <!-- <mat-label>Kategori ID</mat-label> -->
+      <input matInput formControlName="kategoriID" placeholder="Kategori ID"  name="kategoriID" required type ="text">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <!-- <mat-label>Ürün Açıklama</mat-label> -->
+      <input matInput formControlName="urunAciklama" placeholder="Ürün Açıklama"  name="urunAciklama" required type ="text">
+    </mat-form-field>
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>List Görsel</mat-label>
+      <input matInput placeholder="Liste Görsel" formControlName="listeGorsel" required type ="text">
+    </mat-form-field> -->
+    <mat-form-field appearance="outline">
+      <!-- <mat-label>Stok</mat-label> -->
+      <input matInput formControlName="Stok" placeholder="Stok"  name="Stok" required type ="text">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <!-- <mat-label>Geliş Fiyatı</mat-label> -->
+      <input matInput formControlName="gelisFiyati"  placeholder="Geliş Fiyatı"  name="gelisFiyati" required type ="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <!-- <mat-label>Satış Fiyatı</mat-label> -->
+      <input matInput formControlName="satisFiyati" placeholder="Satış Fiyatı" name="satisFiyati" required type ="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <!-- <mat-label>KDV Oran</mat-label> -->
+      <input matInput formControlName="kdvOran"  placeholder="KDV Oran" name="kdvOran" required type ="text">
+    </mat-form-field>
+    
+
+    <p></p>
+    <button mat-raised-button  color="warn" (click)="dialogRef.close(frm.value)" [disabled]="frm.invalid">Kaydet</button> &nbsp;
+    <button mat-raised-button color="warn" (click)="dialogRef.close(undefined)">İptal </button> 
+    </form>    
+</div>

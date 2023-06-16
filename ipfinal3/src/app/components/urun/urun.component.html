@@ -1,0 +1,107 @@
+<div class="container ">
+  <h1>ÜRÜNLER</h1> 
+  
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Aranacak Bir Değer Giriniz" (keyup)="Filtrele($event)"> 
+  </mat-form-field>
+   
+  <button mat-fab matTooltip="Ürün Ekle" color="basic" (click)="UrunEkle()"> 
+    <mat-icon aria-label="label">add</mat-icon>
+  </button>
+ 
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="urunID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ürün ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let urun"> {{urun.urunID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="kategoriID">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Kategori ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kategori"> {{kategori.kategoriID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="markaID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Marka ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let marka"> {{marka.markaID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="urunAdi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ürün Adı
+      </mat-header-cell>
+      <mat-cell *matCellDef="let urun"> {{urun.urunAdi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="urunAciklama">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ürün Açıklama
+      </mat-header-cell>
+      <mat-cell *matCellDef="let urun"> {{urun.urunAciklama}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="listeGorsel">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Liste Görsel
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> 
+        
+      <img [src]="apiServis.siteUrl+'/Dosyalar/'+kayit.listeGorsel"  style="width: 50px;" matTooltip="Fotoğraf Güncellemek İçin Tıklayın"   (click)="UrunGorselGuncelle(kayit)">  
+        
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="stok">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Stok
+      </mat-header-cell>
+      <mat-cell *matCellDef="let stok"> {{stok.stok}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="gelisFiyati">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Geliş Fiyatı
+      </mat-header-cell>
+      <mat-cell *matCellDef="let gelisFiyati"> {{gelisFiyati.gelisFiyati}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="satisFiyati">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Satış Fiyatı
+      </mat-header-cell>
+      <mat-cell *matCellDef="let satisFiyati"> {{satisFiyati.satisFiyati}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="kdvOran">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> KDV Oran
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kdvOran"> {{kdvOran.kdvOran}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="satılanAdet">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Satılan Adet
+      </mat-header-cell>
+      <mat-cell *matCellDef="let satilanAdet"> {{satilanAdet.satilanAdet}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="olusturmaTarih">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Oluşturma Tarihi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let olusturmaTarih"> {{olusturmaTarih.olusturmaTarih}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="guncellemeTarih">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Güncelleme Tarihi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let guncellemeTarih"> {{guncellemeTarih.guncellemeTarih}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler</mat-header-cell>
+      <mat-cell *matCellDef="let urun"> 
+        <button mat-icon-button color="warn" matTooltip="Ürün Düzenle" (click)="UrunDuzenle(urun)">
+          <mat-icon aria-label="label">edit</mat-icon>
+        </button>  
+        <button mat-icon-button color="warn" matTooltip="Ürün Listele" [routerLink]="['/urunlistele' , urun.urunID]">
+          <mat-icon aria-label="label">article</mat-icon>
+        </button>
+     </mat-cell>
+    </ng-container>
+   
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator 
+      [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons="">
+</mat-paginator>
+</div> 
